@@ -195,6 +195,10 @@ mount $DEVICE $NEWMNT
 [ ! -d $NEWMNT/$OLDMNT ] && mkdir -p $NEWMNT/$OLDMNT
 
 cd $NEWMNT
+# systemd mounts rootfs with shared namespace so pivot
+# root will not work, for more info see
+# https://bugzilla.redhat.com/show_bug.cgi?id=1361043
+unshare -m
 pivot_root . ./$OLDMNT
 
 for dir in /dev /proc /sys /run; do
