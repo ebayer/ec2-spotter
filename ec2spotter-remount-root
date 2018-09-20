@@ -198,7 +198,10 @@ cd $NEWMNT
 # systemd mounts rootfs with shared namespace so pivot
 # root will not work, for more info see
 # https://bugzilla.redhat.com/show_bug.cgi?id=1361043
-unshare -m
+# and
+# https://unix.stackexchange.com/questions/226872/how-to-shrink-root-filesystem-without-booting-a-livecd
+mount --make-rprivate /
+
 pivot_root . ./$OLDMNT
 
 for dir in /dev /proc /sys /run; do
