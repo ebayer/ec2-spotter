@@ -32,5 +32,7 @@ fi
 export name=fast-ai
 if [ "$ec2spotter_key_name" = "aws-key-$name" ] 
 then
-	echo Then connect to your instance: ssh -i ~/.ssh/aws-key-$name.pem ubuntu@$ip
+    echo Then connect to your instance: ssh -i ~/.ssh/aws-key-$name.pem ubuntu@$ip
+else
+    echo Spot Instance IP: $ip
 fi
