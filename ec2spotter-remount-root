@@ -202,8 +202,8 @@ cd $NEWMNT
 # https://unix.stackexchange.com/questions/226872/how-to-shrink-root-filesystem-without-booting-a-livecd
 mount --make-rprivate /
 
-pivot_root . ./$OLDMNT
-exec switch_root . /sbin/init
+/sbin/pivot_root . ./$OLDMNT
+exec /sbin/switch_root . /sbin/init
 EOF11
 chmod +x /sbin/init
 shutdown -r now
